@@ -51,27 +51,27 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
 
     val lifecycle_version = "2.8.2"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.kotlinx.coroutines.android)
 
     val nav_version = "2.7.7"
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.androidx.navigation.fragment.ktx.v277)
+    implementation(libs.androidx.navigation.ui.ktx.v277)
+    implementation(libs.retrofit)
+    implementation(libs.glide)
 
     val fragment_version = "1.8.0"
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.viewpager2)
 
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9")
+    implementation(libs.viewbindingpropertydelegate.noreflection)
 
     val koin_android_version = "3.5.6"
-    implementation("io.insert-koin:koin-android:$koin_android_version")
-    implementation("io.insert-koin:koin-androidx-navigation:$koin_android_version")
-    implementation("io.insert-koin:koin-androidx-workmanager:$koin_android_version")
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.navigation)
+    implementation(libs.koin.androidx.workmanager)
 }

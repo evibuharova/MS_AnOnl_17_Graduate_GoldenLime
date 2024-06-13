@@ -27,6 +27,9 @@ class ProductListFragment(
         helperTextView.setOnClickListener {
             viewModel.onItemClicked("temporaryID")
         }
+        toolbar.setNavigationOnClickListener {
+            navigation.navigateBack(requireView())
+        }
     }
 
     private fun observeViewModel() = viewModel.run {

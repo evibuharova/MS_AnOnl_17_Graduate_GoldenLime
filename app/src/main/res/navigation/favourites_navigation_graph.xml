@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favourites_navigation_graph"
+    app:startDestination="@id/favourites_fragment">
+
+    <fragment
+        android:id="@+id/favourites_fragment"
+        android:name="by.evisun.goldenlime.favourites.FavouritesFragment"
+        android:label="Favourites"
+        tools:layout="@layout/fragment_favourites" />
+
+</navigation>
