@@ -69,4 +69,9 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.1.0")
 
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9")
+
+    val koin_android_version = "3.5.6"
+    implementation("io.insert-koin:koin-android:$koin_android_version")
+    implementation("io.insert-koin:koin-androidx-navigation:$koin_android_version")
+    implementation("io.insert-koin:koin-androidx-workmanager:$koin_android_version")
 }

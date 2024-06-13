@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/product_list_fragment">
+
+    <fragment
+        android:id="@+id/product_details_fragment"
+        android:name="by.evisun.goldenlime.details.ProductDetailsFragment"
+        android:label="Product details"
+        tools:layout="@layout/fragment_product_details" />
+
+    <fragment
+        android:id="@+id/product_list_fragment"
+        android:name="by.evisun.goldenlime.list.ProductListFragment"
+        android:label="Product details"
+        tools:layout="@layout/fragment_product_list">
+
+        <action android:id="@+id/navigate_product_list_to_Details"
+            app:destination="@+id/product_details_fragment" />
+    </fragment>
+
+</navigation>
