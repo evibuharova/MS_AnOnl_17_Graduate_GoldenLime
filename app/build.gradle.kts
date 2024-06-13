@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -54,24 +55,27 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
 
-    val lifecycle_version = "2.8.2"
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.kotlinx.coroutines.android)
 
-    val nav_version = "2.7.7"
     implementation(libs.androidx.navigation.fragment.ktx.v277)
     implementation(libs.androidx.navigation.ui.ktx.v277)
     implementation(libs.retrofit)
     implementation(libs.glide)
 
-    val fragment_version = "1.8.0"
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.viewpager2)
 
     implementation(libs.viewbindingpropertydelegate.noreflection)
 
-    val koin_android_version = "3.5.6"
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.navigation)
     implementation(libs.koin.androidx.workmanager)
+
+    implementation(libs.firebase.storage)
+    implementation(libs.firebase.ui.storage)
+    implementation(libs.firebase.firestore)
+
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.compiler)
 }

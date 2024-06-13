@@ -16,6 +16,10 @@
             app:destination="@+id/product_list_fragment" />
     </fragment>
 
+    <action
+        android:id="@+id/navigate_to_Categories"
+        app:destination="@+id/categories_fragment" />
+
     <fragment
         android:id="@+id/product_list_fragment"
         android:name="by.evisun.goldenlime.list.ProductListFragment"
