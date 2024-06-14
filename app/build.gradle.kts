@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.kapt")
+    kotlin("plugin.serialization") version "1.9.0"
+    id("kotlin-parcelize")
 }
 
 android {
@@ -75,7 +77,9 @@ dependencies {
     implementation(libs.firebase.storage)
     implementation(libs.firebase.ui.storage)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.ui.auth)
 
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.compiler)
+    implementation(libs.kotlinx.serialization.json)
 }

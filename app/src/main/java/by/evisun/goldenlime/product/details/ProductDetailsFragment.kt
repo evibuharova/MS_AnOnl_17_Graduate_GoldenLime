@@ -35,6 +35,7 @@ class ProductDetailsFragment(
             navigation.navigateBack(requireView())
         }
         likeButton.setOnClickListener { viewModel.onFavouriteButtonClicked() }
+        cartButton.setOnClickListener { viewModel.onCartButtonClicked() }
     }
 
     private fun observeViewModel() = viewModel.run {
@@ -49,6 +50,11 @@ class ProductDetailsFragment(
         isFavouriteSource.observe(viewLifecycleOwner) {
             binding.likeButton.setImageResource(
                 if (it) R.drawable.baseline_bookmark_24 else R.drawable.outline_bookmark_border_24
+            )
+        }
+        isInCartSource.observe(viewLifecycleOwner) {
+            binding.cartButton.setImageResource(
+                if (it) R.drawable.baseline_cloud_done_24 else R.drawable.outline_cloud_download_24
             )
         }
     }

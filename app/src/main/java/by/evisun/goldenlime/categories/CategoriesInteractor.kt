@@ -1,6 +1,6 @@
 package by.evisun.goldenlime.categories
 
-import by.evisun.goldenlime.core.suspendQuery
+import by.evisun.goldenlime.extensions.suspendResult
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -9,7 +9,7 @@ class CategoriesInteractor {
 
     suspend fun getCategories(parent: String?): List<CategoryModel> {
         val snapshot = Firebase.firestore.collection("categories")
-            .get().suspendQuery()
+            .get().suspendResult()
         val documents = snapshot.documents.filter { document ->
             document.getString("parent") == parent
         }

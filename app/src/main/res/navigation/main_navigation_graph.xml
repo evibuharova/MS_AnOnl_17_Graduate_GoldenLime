@@ -3,11 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
-    app:startDestination="@id/categories_navigation_graph">
+    app:startDestination="@id/login_fragment">
 
     <include app:graph="@navigation/categories_navigation_graph" />
     <include app:graph="@navigation/cart_navigation_graph" />
     <include app:graph="@navigation/menu_navigation_graph" />
     <include app:graph="@navigation/favourites_navigation_graph" />
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="by.evisun.goldenlime.auth.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/navigate_Login_to_Main_content"
+            app:destination="@+id/categories_navigation_graph"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

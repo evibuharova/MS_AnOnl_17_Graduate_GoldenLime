@@ -9,6 +9,17 @@
         android:id="@+id/cart_fragment"
         android:name="by.evisun.goldenlime.cart.CartFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+
+        <action
+            android:id="@+id/navigate_Cart_to_Product_details"
+            app:destination="@+id/product_details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_details_fragment"
+        android:name="by.evisun.goldenlime.product.details.ProductDetailsFragment"
+        android:label="Product details"
+        tools:layout="@layout/fragment_product_details" />
 
 </navigation>
