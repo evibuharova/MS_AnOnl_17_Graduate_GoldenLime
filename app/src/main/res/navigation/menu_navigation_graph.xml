@@ -9,6 +9,17 @@
         android:id="@+id/menu_fragment"
         android:name="by.evisun.goldenlime.menu.MenuFragment"
         android:label="Menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu">
+
+        <action
+            android:id="@+id/navigate_Menu_to_SignIn"
+            app:destination="@+id/sign_in_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sign_in_fragment"
+        android:name="by.evisun.goldenlime.auth.SignInFragment"
+        android:label="SignIn"
+        tools:layout="@layout/fragment_sign_in" />
 
 </navigation>

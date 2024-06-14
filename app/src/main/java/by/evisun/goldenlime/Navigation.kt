@@ -14,6 +14,7 @@ interface Navigation {
     fun navigateToProductList(view: View, category: String)
     fun navigateToCategories(view: View, category: String)
     fun navigateLoginToMainContent(view: View)
+    fun navigateMenuToSignIn(view: View)
     fun navigateBack(view: View)
 }
 
@@ -46,6 +47,10 @@ class DefaultNavigation : Navigation {
 
     override fun navigateLoginToMainContent(view: View) {
         navigate(view, R.id.navigate_Login_to_Main_content)
+    }
+
+    override fun navigateMenuToSignIn(view: View) {
+        navigate(view, R.id.navigate_Menu_to_SignIn)
     }
 
     override fun navigateBack(view: View) {
