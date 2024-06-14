@@ -4,10 +4,12 @@ import by.evisun.goldenlime.cart.CartFragment
 import by.evisun.goldenlime.categories.CategoriesFragment
 import by.evisun.goldenlime.categories.CategoriesInteractor
 import by.evisun.goldenlime.categories.CategoryViewModel
-import by.evisun.goldenlime.details.ProductDetailsFragment
-import by.evisun.goldenlime.list.ProductListViewModel
-import by.evisun.goldenlime.list.ProductListFragment
+import by.evisun.goldenlime.product.details.ProductDetailsFragment
+import by.evisun.goldenlime.product.ProductInteractor
+import by.evisun.goldenlime.product.list.ProductListViewModel
+import by.evisun.goldenlime.product.list.ProductListFragment
 import by.evisun.goldenlime.menu.MenuFragment
+import by.evisun.goldenlime.product.details.ProductDetailsViewModel
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
@@ -26,10 +28,12 @@ object KoinAppModules {
         viewModelOf(::CategoryViewModel)
         factoryOf(::CategoriesInteractor)
 
-        fragment { ProductDetailsFragment(get()) }
+        fragment { ProductDetailsFragment(get(), { get() }) }
+        viewModelOf(::ProductDetailsViewModel)
 
         fragment { ProductListFragment(get(), { get() }) }
         viewModelOf(::ProductListViewModel)
+        factoryOf(::ProductInteractor)
 
         fragment { MenuFragment() }
     }

@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/product_list_fragment"
-        android:name="by.evisun.goldenlime.list.ProductListFragment"
+        android:name="by.evisun.goldenlime.product.list.ProductListFragment"
         android:label="Product details"
         tools:layout="@layout/fragment_product_list">
 
@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/product_details_fragment"
-        android:name="by.evisun.goldenlime.details.ProductDetailsFragment"
+        android:name="by.evisun.goldenlime.product.details.ProductDetailsFragment"
         android:label="Product details"
         tools:layout="@layout/fragment_product_details" />
 

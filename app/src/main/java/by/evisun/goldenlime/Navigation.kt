@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import by.evisun.goldenlime.categories.CategoriesFragment
+import by.evisun.goldenlime.product.details.ProductDetailsFragment
+import by.evisun.goldenlime.product.list.ProductListFragment
 
 interface Navigation {
     fun navigateToProductDetails(view: View, id: String)
@@ -15,11 +17,13 @@ interface Navigation {
 class DefaultNavigation : Navigation {
 
     override fun navigateToProductDetails(view: View, id: String) {
-        navigate(view, R.id.navigate_Product_list_to_Details)
+        val arguments = ProductDetailsFragment.newBundle(id)
+        navigate(view, R.id.navigate_Product_list_to_Details, arguments)
     }
 
     override fun navigateToProductList(view: View, category: String) {
-        navigate(view, R.id.navigate_Categories_to_Product_list)
+        val arguments = ProductListFragment.newBundle(category)
+        navigate(view, R.id.navigate_Categories_to_Product_list, arguments)
     }
 
     override fun navigateToCategories(view: View, category: String) {
