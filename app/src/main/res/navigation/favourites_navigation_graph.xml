@@ -9,6 +9,17 @@
         android:id="@+id/favourites_fragment"
         android:name="by.evisun.goldenlime.favourites.FavouritesFragment"
         android:label="Favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites">
+
+        <action
+            android:id="@+id/navigate_Favourites_to_Product_details"
+            app:destination="@+id/product_details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_details_fragment"
+        android:name="by.evisun.goldenlime.product.details.ProductDetailsFragment"
+        android:label="Product details"
+        tools:layout="@layout/fragment_product_details" />
 
 </navigation>

@@ -4,6 +4,8 @@ import by.evisun.goldenlime.cart.CartFragment
 import by.evisun.goldenlime.categories.CategoriesFragment
 import by.evisun.goldenlime.categories.CategoriesInteractor
 import by.evisun.goldenlime.categories.CategoryViewModel
+import by.evisun.goldenlime.favourites.FavouritesFragment
+import by.evisun.goldenlime.favourites.FavouritesViewModel
 import by.evisun.goldenlime.product.details.ProductDetailsFragment
 import by.evisun.goldenlime.product.ProductInteractor
 import by.evisun.goldenlime.product.list.ProductListViewModel
@@ -36,5 +38,8 @@ object KoinAppModules {
         factoryOf(::ProductInteractor)
 
         fragment { MenuFragment() }
+
+        fragment { FavouritesFragment(get(), { get() }) }
+        viewModelOf(::FavouritesViewModel)
     }
 }

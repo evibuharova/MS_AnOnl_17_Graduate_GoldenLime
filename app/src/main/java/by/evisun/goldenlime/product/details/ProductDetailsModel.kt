@@ -9,5 +9,6 @@ data class ProductDetailsModel(
     val description: String,
     val firebaseImageUrl: StorageReference?,
     val price: Int,
+    val isFavourite: Boolean,
     val capacity: Int,
 )

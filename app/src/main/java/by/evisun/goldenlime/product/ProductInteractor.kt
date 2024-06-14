@@ -2,6 +2,7 @@ package by.evisun.goldenlime.product
 
 import by.evisun.goldenlime.core.suspendDocument
 import by.evisun.goldenlime.core.suspendQuery
+import by.evisun.goldenlime.core.suspendVoid
 import by.evisun.goldenlime.product.details.ProductDetailsModel
 import by.evisun.goldenlime.product.list.ProductListModel
 import com.google.firebase.firestore.ktx.firestore
@@ -44,7 +45,33 @@ class ProductInteractor {
             firebaseImageUrl = image,
             capacity = dto.capacity,
             price = dto.price,
-            category = dto.category
+            category = dto.category,
+            isFavourite = dto.isFavourite
         )
+    }
+
+    suspend fun getFavourites(): List<ProductListModel> {
+        val documents = Firebase.firestore.collection("products")
+            .whereEqualTo("isFavourite", true)
+            .get().suspendQuery()
+        return documents.map { document ->
+            val dto = document.toObject(ProductDto::class.java)
+            val image = dto.image?.let { name ->
+                Firebase.storage.reference.child("products").child(name)
+            }
+            ProductListModel(
+                id = document.id,
+                title = dto.title,
+                firebaseImageUrl = image,
+                price = dto.price,
+                category = dto.category
+            )
+        }
+    }
+
+    suspend fun makeFavourite(isFavourite: Boolean, id: String) {
+        Firebase.firestore.collection("products").document(id)
+            .update("isFavourite", isFavourite)
+            .suspendVoid()
     }
 }

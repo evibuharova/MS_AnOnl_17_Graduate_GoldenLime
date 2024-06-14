@@ -22,3 +22,12 @@ suspend inline fun Task<DocumentSnapshot>.suspendDocument(): DocumentSnapshot =
                 continuation.resumeWith(Result.failure(it.cause ?: Throwable()))
             }
     }
+
+suspend inline fun Task<Void>.suspendVoid(): Void =
+    suspendCancellableCoroutine { continuation ->
+        this.addOnSuccessListener { continuation.resumeWith(Result.success(it)) }
+            .addOnCanceledListener { continuation.cancel() }
+            .addOnFailureListener {
+                continuation.resumeWith(Result.failure(it.cause ?: Throwable()))
+            }
+    }

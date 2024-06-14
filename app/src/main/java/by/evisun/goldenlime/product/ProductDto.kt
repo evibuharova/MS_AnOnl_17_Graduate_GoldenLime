@@ -7,6 +7,7 @@ data class ProductDto(
     @JvmField val image: String?,
     @JvmField val price: Int,
     @JvmField val capacity: Int,
+    @JvmField val isFavourite: Boolean,
 ) {
-    constructor() : this("", "", "", null, 0, 0)
+    constructor() : this("", "", "", null, 0, 0, false)
 }

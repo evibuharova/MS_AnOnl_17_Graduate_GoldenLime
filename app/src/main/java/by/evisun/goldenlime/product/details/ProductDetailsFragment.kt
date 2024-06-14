@@ -34,6 +34,7 @@ class ProductDetailsFragment(
         toolbar.setNavigationOnClickListener {
             navigation.navigateBack(requireView())
         }
+        likeButton.setOnClickListener { viewModel.onFavouriteButtonClicked() }
     }
 
     private fun observeViewModel() = viewModel.run {
@@ -44,6 +45,11 @@ class ProductDetailsFragment(
             Glide.with(binding.iconImageView)
                 .load(imageRef)
                 .into(binding.iconImageView)
+        }
+        isFavouriteSource.observe(viewLifecycleOwner) {
+            binding.likeButton.setImageResource(
+                if (it) R.drawable.baseline_bookmark_24 else R.drawable.outline_bookmark_border_24
+            )
         }
     }
 

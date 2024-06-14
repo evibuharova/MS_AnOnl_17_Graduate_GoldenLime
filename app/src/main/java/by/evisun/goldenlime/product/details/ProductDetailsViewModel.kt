@@ -13,23 +13,40 @@ class ProductDetailsViewModel(
     private val interactor: ProductInteractor
 ) : ViewModel() {
 
+    private var productId: String? = null
+
     val imageSource = MutableLiveData<StorageReference>()
     val titleSource = MutableLiveData<String>()
     val descriptionSource = MutableLiveData<String>()
     val priceSource = MutableLiveData<String>()
+    val isFavouriteSource = MutableLiveData<Boolean>()
 
     fun init(productId: String?) {
-        productId ?: return // TODO show error?
+        this.productId = productId ?: return // TODO show error?
 
         viewModelScope.launch(Dispatchers.Main) {
             val item: ProductDetailsModel?
             withContext(Dispatchers.IO) {
                 item = interactor.getProductDetails(productId)
             }
-            imageSource.value = item?.firebaseImageUrl ?: return@launch
+            item ?: return@launch // TODO show error?
+            item.firebaseImageUrl?.let { imageSource.value = it }
             titleSource.value = item.title
             descriptionSource.value = item.description
+            isFavouriteSource.value = item.isFavourite
             priceSource.value = (item.price / 100.0).toString()
+        }
+    }
+
+    fun onFavouriteButtonClicked() {
+        val productId = this.productId ?: return
+        val isFavourite = this.isFavouriteSource.value == true
+        viewModelScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                interactor.makeFavourite(!isFavourite, productId)
+            }
+            // TODO show progress or success message?
+            isFavouriteSource.value = !isFavourite
         }
     }
 }
